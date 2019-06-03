@@ -34,9 +34,8 @@
 
 
 	<c:if test="${not empty locations}">
-	<img src="/images/sakshi.jpg">
+	<%--<img src="/images/sakshi.jpg">--%>
 
-	<h4><%=CT %></h4>
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -48,8 +47,8 @@
 									<th class="column100 column1" >Location</th>
 									<th class="column100 column2" style="text-align: center">GE Port</th>
 									<th class="column100 column3" style="text-align: center">Control Port</th>
-									<th class="column100 column2" style="text-align: center">WAN IP - PE</th>
-									<th class="column100 column3" style="text-align: center">WAN IP - CPE</th>
+									<th class="column100 column4" style="text-align: center">WAN IP - PE</th>
+									<th class="column100 column5" style="text-align: center">WAN IP - CPE</th>
 								</tr>
 							</thead>
 						</table>
@@ -67,7 +66,7 @@
 											class="column100 column${loop.index + 2}"
 												<c:choose>
 													<c:when test="${location.value eq'UP'}">
-														style='background-color:#008000; color: white; text-align: center'
+														style='background-color:#00af00; color: white; text-align: center'
 													</c:when>
 													<c:when test="${location.value
 																eq'DOWN'}">
@@ -86,6 +85,12 @@
 								</tr>
 							</c:forEach>
 						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="5" style="text-align: right; font-size: 14px">Last updated on <%=CT %>
+								</td>
+							</tr>
+						</tfoot>
 					</table>
 				</c:if>
 

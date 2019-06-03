@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
@@ -19,7 +20,7 @@ public class PingStatusController {
 	}
 
 	@GetMapping("/getLocationsStatus")
-	public Map<String, Map<String, IpStatus>> getAllLocationsStatus() {
+	public Map<String, LinkedHashMap<String, IpStatus>> getAllLocationsStatus() {
 
 		return pingStatusService.getAllLocationsStatus();
 	}

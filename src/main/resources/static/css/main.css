@@ -174,11 +174,11 @@ th, td {
 }
 
 .column4 {
-  width: 19%;
+  width: 20%;
 }
 
 .column5 {
-  width: 13%;
+  width: 20%;
 }
 
 .table100-head th {
@@ -206,7 +206,7 @@ th, td {
 }
 
 .table100-body {
-  max-height: 700px;
+  max-height: 770px;
   overflow: auto;
 }
 

@@ -13,17 +13,17 @@ import java.util.stream.StreamSupport;
 @Service
 public class PingStatusService {
 
-	private Map<String, Map<String, IpStatus>> siteStatus = new HashMap<>();
+	private Map<String, LinkedHashMap<String, IpStatus>> siteStatus = new LinkedHashMap<>();
 
 	public void saveStatus(String locationName, String ip, IpStatus ipStatus) {
 
 		if(!siteStatus.containsKey(locationName)) {
-			siteStatus.put(locationName, new HashMap<>());
+			siteStatus.put(locationName, new LinkedHashMap<>());
 		}
 		siteStatus.get(locationName).put(ip, ipStatus);
 	}
 
-	public Map<String, Map<String, IpStatus>> getAllLocationsStatus(){
+	public Map<String, LinkedHashMap<String, IpStatus>> getAllLocationsStatus(){
 //		Map newMap = siteStatus.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 		Map newMap = siteStatus.entrySet().stream().sorted(Map.Entry.comparingByKey()).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
