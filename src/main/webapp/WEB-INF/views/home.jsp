@@ -8,7 +8,11 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Sakshi Network Status</title>
+	<title>Sakshi Tv Network Status</title>
+
+	<link rel="shortcut icon" href="<c:url
+	value="${pageContext.request.contextPath}/images/sakshitv.jpg" />"
+		  type="image/x-icon" />
 
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
@@ -25,16 +29,19 @@
 		int hour = calendar.get(Calendar.HOUR_OF_DAY);
 		int minute = calendar.get(Calendar.MINUTE);
 		int second = calendar.get(Calendar.SECOND);
-		String CT = day + "-" + month + "-" + year + " " + hour + ":" + minute + ":" +
-				second;
+		String CT = (day<10?("0"+day):(day)) + "-" + (month<10?("0"+month):(month)) +
+				"-" + year + "   " + (hour<10?("0"+hour):(hour)) + ":" +
+				(minute<10?("0"+minute):(minute)) + ":" + (second<10?("0"+second):(second));
 	%>
 
 </head>
 <body>
 
-
 	<c:if test="${not empty locations}">
-	<%--<img src="/images/sakshi.jpg">--%>
+	<div class="pull-right">
+		<img src="${pageContext.request.contextPath}/images/sakshitv.jpg"
+			 style="height: 80px">
+	</div>
 
 	<div class="limiter">
 		<div class="container-table100">
@@ -65,7 +72,7 @@
 										<td
 											class="column100 column${loop.index + 2}"
 												<c:choose>
-													<c:when test="${location.value eq'UP'}">
+													<c:when test="${location.value eq 'UP'}">
 														style='background-color:#00af00; color: white; text-align: center'
 													</c:when>
 													<c:when test="${location.value
@@ -87,7 +94,7 @@
 						</tbody>
 						<tfoot>
 							<tr>
-								<td colspan="5" style="text-align: right; font-size: 14px">Last updated on <%=CT %>
+								<td colspan="5" style="text-align: right;font-size:12px">Last updated on <%=CT %>
 								</td>
 							</tr>
 						</tfoot>
